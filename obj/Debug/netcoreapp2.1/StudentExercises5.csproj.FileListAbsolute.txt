@@ -1,0 +1,11 @@
+C:\Users\imapl\Documents\Workspace\StudentExercises5\StudentExercises5\bin\Debug\netcoreapp2.1\StudentExercises5.deps.json
+C:\Users\imapl\Documents\Workspace\StudentExercises5\StudentExercises5\bin\Debug\netcoreapp2.1\StudentExercises5.runtimeconfig.json
+C:\Users\imapl\Documents\Workspace\StudentExercises5\StudentExercises5\bin\Debug\netcoreapp2.1\StudentExercises5.runtimeconfig.dev.json
+C:\Users\imapl\Documents\Workspace\StudentExercises5\StudentExercises5\bin\Debug\netcoreapp2.1\StudentExercises5.dll
+C:\Users\imapl\Documents\Workspace\StudentExercises5\StudentExercises5\bin\Debug\netcoreapp2.1\StudentExercises5.pdb
+C:\Users\imapl\Documents\Workspace\StudentExercises5\StudentExercises5\obj\Debug\netcoreapp2.1\StudentExercises5.csprojAssemblyReference.cache
+C:\Users\imapl\Documents\Workspace\StudentExercises5\StudentExercises5\obj\Debug\netcoreapp2.1\StudentExercises5.csproj.CoreCompileInputs.cache
+C:\Users\imapl\Documents\Workspace\StudentExercises5\StudentExercises5\obj\Debug\netcoreapp2.1\StudentExercises5.AssemblyInfoInputs.cache
+C:\Users\imapl\Documents\Workspace\StudentExercises5\StudentExercises5\obj\Debug\netcoreapp2.1\StudentExercises5.AssemblyInfo.cs
+C:\Users\imapl\Documents\Workspace\StudentExercises5\StudentExercises5\obj\Debug\netcoreapp2.1\StudentExercises5.dll
+C:\Users\imapl\Documents\Workspace\StudentExercises5\StudentExercises5\obj\Debug\netcoreapp2.1\StudentExercises5.pdb

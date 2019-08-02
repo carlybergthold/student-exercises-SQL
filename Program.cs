@@ -19,8 +19,11 @@ namespace StudentExercises5
 
             Pause();
 
-            //TO DO - print exercises that use JS
-            //exercises.Where(ex => ex.Language == "JavaScript");
+            // print exercises that use JS
+            var JSExercises = exercises.Where(ex => ex.Language == "JavaScript").ToList();
+            repository.PrintExercises(JSExercises);
+
+            Pause();
 
             //add local instance of an exercise
             Exercise DoAllThings = new Exercise() { ExerciseName = "Do all the things", Language = "JavaScript" };
@@ -46,6 +49,16 @@ namespace StudentExercises5
             instructors = repository.GetAllInstructorsWithCohorts();
             Console.Write("instructors after adding");
             repository.PrintInstructors(instructors);
+
+            Pause();
+
+            // get list of students from database and prints to console
+            var students = repository.GetStudents();
+            repository.PrintStudents(students);
+
+            Pause();
+
+
 
         }
         public static void Pause()

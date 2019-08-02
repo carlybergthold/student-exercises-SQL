@@ -158,29 +158,47 @@ namespace StudentExercises5.Data
 
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT Id, FirstName, LastName, SlackHandle, CohortId 
-                                        FROM Students";
+                    cmd.CommandText = @"SELECT s.Id AS StudentId, s.FirstName, s.LastName, s.SlackHandle, s.CohortId, c.CohortName, 
+                                            se.ExerciseId,
+                                            e.ExerciseName, e.Language 
+                                        FROM Students s
+                                        JOIN Cohorts c
+                                        On c.Id = s.CohortId
+                                        JOIN StudentExercises se
+                                        ON se.StudentId = s.Id
+                                        JOIN Exercises e 
+                                        ON e.Id = se.ExerciseId";
                     SqlDataReader reader = cmd.ExecuteReader();
 
-                    List<Student> students = new List<Student>();
+                    var students = new List<Student>();
+
+                    var exercises = new List<Exercise>();
 
                     while (reader.Read())
                     {
-                        int cohortIdValue = reader.GetInt32(reader.GetOrdinal("CohortId"));
-
                         Cohort cohort = new Cohort
                         {
-                            Id = cohortIdValue,
-                            CohortName: 
+                            Id = reader.GetInt32(reader.GetOrdinal("CohortId")),
+                            CohortName = reader.GetString(reader.GetOrdinal("CohortName"))
                         };
+
+                        Exercise exercise = new Exercise
+                        {
+                            Id = reader.GetInt32(reader.GetOrdinal("ExerciseId")),
+                            ExerciseName = reader.GetString(reader.GetOrdinal("ExerciseName")),
+                            Language = reader.GetString(reader.GetOrdinal("Language"))
+                        };
+
+                        exercises.Add(exercise);
 
                         Student student = new Student
                         {
-                            Id = reader.GetInt32(reader.GetOrdinal("Id")),
-                            FirstName = reader.GetString(reader.GetOrdinal("Id")),
-                            LastName = reader.GetString(reader.GetOrdinal("Id")),
-                            SlackHandle = reader.GetString(reader.GetOrdinal("Id")),
-                            Cohort = cohort
+                            Id = reader.GetInt32(reader.GetOrdinal("StudentId")),
+                            FirstName = reader.GetString(reader.GetOrdinal("FirstName")),
+                            LastName = reader.GetString(reader.GetOrdinal("LastName")),
+                            SlackHandle = reader.GetString(reader.GetOrdinal("SlackHandle")),
+                            Cohort = cohort,
+                            StudentExercises = exercises
                         };
 
                         students.Add(student);
@@ -192,5 +210,23 @@ namespace StudentExercises5.Data
                 }
             }
         }
+
+        public void PrintStudents(List<Student> stuList)
+        {
+            stuList.ForEach(stu =>
+               Console.WriteLine($"Student: {stu.FirstName} is in {stu.Cohort.CohortName}")
+            );
+        }
+
+        public void PrintStudentsWithExercises(List<Student> stuList)
+        {
+            foreach (Student stu in stuList)
+                foreach (Exercise ex in stu.StudentExercises)
+                    Console.WriteLine($"Student: {stu.FirstName} is in {stu.Cohort.CohortName} " +
+                    $"and is working on {ex.ExerciseName}");
+        }
+
+        //TO DO - write method in repo that accepts a Cohort and Exercise and assigns that exercise
+        // to each student in that cohort UNLESS the student has already been assigned
     }
 }
